@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/temperature', 'StaticController@temperature')->name('temperature');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'StaticController@temperature');
+/*Route::get('/', function () {
+	return view('welcome');
+});*/
