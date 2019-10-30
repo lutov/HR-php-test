@@ -37,6 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('temperature') }}">Температура</a></li>
+                        <li><a href="/order">Заказы</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

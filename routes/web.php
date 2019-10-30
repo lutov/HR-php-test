@@ -13,6 +13,9 @@
 
 Route::get('/temperature', 'StaticController@temperature')->name('temperature');
 
+Route::get('/order', 'OrderController@list');
+Route::get('/order/{id}', 'OrderController@item');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
