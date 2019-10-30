@@ -23,13 +23,13 @@
 
                             <tr>
 
-                                <td><a href="/order/{{$order->id}}">{{$order->id}}</a></td>
+                                <td><a href="/order/{{$order->id}}" target="_blank">{{$order->id}}</a></td>
                                 <td>{{$order->partner->name}}</td>
-                                <td>{{$order->products()->sum(DB::raw('products.price * quantity'))}}</td>
+                                <td>{{$order->products()->sum(DB::raw('order_products.price * quantity'))}}</td>
                                 <td>
                                     <ol>
                                     @foreach($order->products as $product)
-                                        <li>{{$product->name}}, {{$product->price}} x {{$product->total->quantity}} = {{$product->price * $product->total->quantity}}</li>
+                                        <li>{{$product->name}}, {{$product->params->price}} x {{$product->params->quantity}} = {{$product->params->price * $product->params->quantity}}</li>
                                     @endforeach
                                     </ol>
                                 </td>

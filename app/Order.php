@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model {
 
+	private $status_list = array(
+		'0' => 'новый',
+		'10' => 'подтвержден',
+		'20' => 'завершен',
+	);
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -24,9 +30,18 @@ class Order extends Model {
 	public function products() {
 
 		return $this->belongsToMany('App\Product', 'order_products')
-			->as('total')
-			->withPivot('quantity')
+			->as('params')
+			->withPivot(array('quantity', 'price'))
 		;
+
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getStatusList() {
+
+		return $this->status_list;
 
 	}
 
@@ -35,13 +50,7 @@ class Order extends Model {
 	 */
 	public function getStatus() {
 
-		$status = array(
-			'0' => 'новый',
-			'10' => 'подтвержден',
-			'20' => 'завершен',
-		);
-
-		return $status[$this->status];
+		return $this->status_list[$this->status];
 
 	}
 

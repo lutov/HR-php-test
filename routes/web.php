@@ -15,6 +15,7 @@ Route::get('/temperature', 'StaticController@temperature')->name('temperature');
 
 Route::get('/order', 'OrderController@list');
 Route::get('/order/{id}', 'OrderController@item');
+Route::post('/order/{id}', 'OrderController@save');
 
 Auth::routes();
 
